@@ -1,18 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminCrewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ProfileController;
 
+// Ruta para la página de inicio
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
+// Rutas de autenticación
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -76,18 +78,43 @@ Route::post('/register', function (Request $request) {
     return redirect('/')->with('success', 'User registered successfully.');
 });
 
+// Rutas para el administrador
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
     Route::patch('/admin/requests/{userRequest}', [RequestController::class, 'update'])->name('admin.requests.update');
+
+    // Rutas para AdminUserController
+    Route::resource('admin/users', AdminUserController::class)->names([
+        'index' => 'admin.users.index',
+        'create' => 'admin.users.create',
+        'store' => 'admin.users.store',
+        'show' => 'admin.users.show',
+        'edit' => 'admin.users.edit',
+        'update' => 'admin.users.update',
+        'destroy' => 'admin.users.destroy',
+    ]);
+
+    // Rutas para AdminCrewController
+    Route::resource('admin/crews', AdminCrewController::class)->names([
+        'index' => 'admin.crews.index',
+        'create' => 'admin.crews.create',
+        'store' => 'admin.crews.store',
+        'show' => 'admin.crews.show',
+        'edit' => 'admin.crews.edit',
+        'update' => 'admin.crews.update',
+        'destroy' => 'admin.crews.destroy',
+    ]);
 });
 
+// Rutas para el usuario
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/request', [RequestController::class, 'create'])->name('user.request.create');
     Route::post('/user/request', [RequestController::class, 'store'])->name('user.request.store');
 });
 
+// Rutas para el perfil
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
