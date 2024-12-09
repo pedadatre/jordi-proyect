@@ -21,4 +21,5 @@
             <p>Please <a href="{{ route('login') }}">login</a> or <a href="{{ route('register') }}">register</a>.</p>
         @endif
     </div>
+    
 @endsection
