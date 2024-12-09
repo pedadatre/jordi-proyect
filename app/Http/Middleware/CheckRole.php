@@ -16,7 +16,7 @@ class CheckRole
             $user = Auth::user();
             if ($role === 'admin' && $user->role_id != 1) {
                 return redirect('/user');
-            } elseif ($role === 'user' && $user->role_id != 0) {
+            } elseif ($role === 'user' && $user->role_id != 2) {
                 return redirect('/admin');
             }
         }
