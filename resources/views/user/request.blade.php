@@ -10,7 +10,12 @@
                 <label for="crew_id">Select Crew</label>
                 <select name="crew_id" id="crew_id" class="form-control" required>
                     @foreach($crews as $crew)
-                        <option value="{{ $crew->id }}">{{ $crew->name }}</option>
+          
+          
+          
+          
+          
+                    <option value="{{ $crew->id }}">{{ $crew->name }}</option>
                     @endforeach
                 </select>
             </div>

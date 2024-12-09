@@ -18,13 +18,21 @@
                     </x-nav-link>
                     @if (Auth::check())
                         @if (Auth::user()->role_id == 1)
+                            <!-- Opciones para el administrador -->
                             <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                                 {{ __('Admin Dashboard') }}
                             </x-nav-link>
                             <x-nav-link :href="route('admin.requests')" :active="request()->routeIs('admin.requests')">
                                 {{ __('Manage Requests') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                                {{ __('Manage Users') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('admin.crews.index')" :active="request()->routeIs('admin.crews.index')">
+                                {{ __('Manage Crews') }}
+                            </x-nav-link>
                         @elseif (Auth::user()->role_id == 2)
+                            <!-- Opciones para el usuario -->
                             <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                                 {{ __('User Dashboard') }}
                             </x-nav-link>
@@ -96,13 +104,21 @@
             </x-responsive-nav-link>
             @if (Auth::check())
                 @if (Auth::user()->role_id == 1)
+                    <!-- Opciones para el administrador -->
                     <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                         {{ __('Admin Dashboard') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('admin.requests')" :active="request()->routeIs('admin.requests')">
                         {{ __('Manage Requests') }}
                     </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                        {{ __('Manage Users') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('admin.crews.index')" :active="request()->routeIs('admin.crews.index')">
+                        {{ __('Manage Crews') }}
+                    </x-responsive-nav-link>
                 @elseif (Auth::user()->role_id == 2)
+                    <!-- Opciones para el usuario -->
                     <x-responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
                         {{ __('User Dashboard') }}
                     </x-responsive-nav-link>

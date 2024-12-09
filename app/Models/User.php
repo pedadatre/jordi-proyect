@@ -47,5 +47,15 @@ class User extends Authenticatable
     public function requests(){
         return $this->hasMany(Request::class);
     }
+    public function role(){
 
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
 }
+
+

@@ -1,29 +1,58 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+<!-- resources/views/profile/edit.blade.php -->
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
+@section('content')
+    <div class="container">
+        <h1>Edit Profile</h1>
+        <form method="POST" action="{{ route('profile.update') }}">
+            @csrf
+            @method('PATCH')
+
+            <!-- Name -->
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+                @error('name')
+                    <span>{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
+            <!-- Email -->
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" value="{{ old('email', auth()->user()->email) }}" required>
+                @error('email')
+                    <span>{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
+            <!-- Password -->
+            <div>
+                <label for="password">New Password</label>
+                <input id="password" type="password" name="password">
+                @error('password')
+                    <span>{{ $message }}</span>
+                @enderror
             </div>
-        </div>
+
+            <!-- Confirm Password -->
+            <div>
+                <label for="password_confirmation">Confirm Password</label>
+                <input id="password_confirmation" type="password" name="password_confirmation">
+                @error('password_confirmation')
+                    <span>{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div>
+                <button type="submit">Update Profile</button>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('profile.destroy') }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete Profile</button>
+        </form>
     </div>
-</x-app-layout>
+@endsection
