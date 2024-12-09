@@ -1,7 +1,6 @@
 <?php
 // database/seeders/RoleSeeder.php
 
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -11,9 +10,9 @@ class RoleSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('roles')->insert([
-            ['name' => 'Admin', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'User', 'created_at' => now(), 'updated_at' => now()],
+        DB::table('roles')->insertOrIgnore([
+            ['id' => 2, 'name' => 'User', 'created_at' => now(), 'updated_at' => now()],
+            ['id' => 1, 'name' => 'Admin', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
