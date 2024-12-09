@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RequestController;
 
 Route::get('/', function () {
     return view('home');
@@ -77,10 +78,14 @@ Route::post('/register', function (Request $request) {
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
+    Route::patch('/admin/requests/{userRequest}', [RequestController::class, 'update'])->name('admin.requests.update');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/request', [RequestController::class, 'create'])->name('user.request.create');
+    Route::post('/user/request', [RequestController::class, 'store'])->name('user.request.store');
 });
 
 Route::middleware(['auth'])->group(function () {
