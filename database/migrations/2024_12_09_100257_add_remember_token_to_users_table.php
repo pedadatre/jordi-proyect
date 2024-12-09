@@ -23,7 +23,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             if (Schema::hasColumn('users', 'remember_token')) {
-                $table->dropColumn('remember_token'); // Eliminar la columna remember_token
+                $table->dropColumn('remember_token'); 
             }
         });
     }
