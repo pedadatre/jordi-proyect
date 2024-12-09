@@ -2,6 +2,7 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <!-- Email Address -->
         <div>
