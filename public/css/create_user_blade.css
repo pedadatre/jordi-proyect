@@ -1,0 +1,137 @@
+/* Global Styles */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Styling */
+#crew-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styling */
+.crew-card-container {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.crew-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.crew-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.crew-card .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.crew-card .card-text {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Spotlight Effect */
+.spotlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 80%);
+    transition: background 0.2s ease;
+}
+
+/* Button Styling */
+.join-button {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+}
+
+.join-button:hover {
+    background: linear-gradient(90deg, #0056b3, #003d80);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+}
+.crew-sidebar {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px 0 0 8px;
+    transition: right 0.3s ease;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.crew-card-container:hover .crew-sidebar {
+    right: 0;
+}
+
+.crew-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.crew-sidebar ul li {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.crew-sidebar ul li strong {
+    color: #007bff;
+}
+
+.close-sidebar {
+    align-self: flex-end;
+    background: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-sidebar:hover {
+    background: #e0564c;
+}

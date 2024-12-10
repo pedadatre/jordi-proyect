@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -12,6 +11,9 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Page Specific Styles -->
+    @stack('styles')
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -31,5 +33,8 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Page Specific Scripts -->
+    @stack('scripts')
 </body>
 </html>
