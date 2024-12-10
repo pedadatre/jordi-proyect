@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/create_admin_crew.css') }}">
     <div class="container">
         <h1>Create Crew</h1>
         <form method="POST" action="{{ route('admin.crews.store') }}">

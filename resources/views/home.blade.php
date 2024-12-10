@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
     <div class="hero">
         <img src="{{asset('img/img5.jpg')}}" alt="Imagen de portada de peñas">
         <h1>Bienvenido a Nuestras Peñas</h1>
@@ -9,9 +10,9 @@
 
     <div class="slider">
         <div class="slider-container">
-            <div class="slider-item"><img src="{{asset('img/img5.jpg')}}" alt="Imagen 1"></div>
-            <div class="slider-item"><img src="{{asset('img/img5.jpg')}}" alt="Imagen 2"></div>
-            <div class="slider-item"><img src="{{asset('img/img5.jpg')}}" alt="Imagen 3"></div>
+            <div class="slider-item"><img src="{{asset('img/img3.jpg')}}" alt="Imagen 1"></div>
+            <div class="slider-item"><img src="{{asset('img/img2.jpg')}}" alt="Imagen 2"></div>
+            <div class="slider-item"><img src="{{asset('img/img1.jpg')}}" alt="Imagen 3"></div>
         </div>
         <div class="slider-nav"></div>
     </div>
