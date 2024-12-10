@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckRole;
+use App\Http\Middleware\CheckRole; // Importar el middleware
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminCrewController;
@@ -19,7 +19,7 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/login', function (Request $request) {
+Route::post('/login', function (HttpRequest $request) {
     $credentials = $request->validate([
         'email' => ['required', 'email'],
         'password' => ['required'],
@@ -43,7 +43,7 @@ Route::post('/login', function (Request $request) {
     ])->onlyInput('email');
 });
 
-Route::post('/logout', function (Request $request) {
+Route::post('/logout', function (HttpRequest $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
@@ -55,7 +55,7 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::post('/register', function (Request $request) {
+Route::post('/register', function (HttpRequest $request) {
     $request->validate([
         'name' => 'required|string|max:255',
         'surname' => 'required|string|max:255',
@@ -82,7 +82,7 @@ Route::post('/register', function (Request $request) {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
-    Route::patch('/admin/requests/{userRequest}', [RequestController::class, 'update'])->name('admin.requests.update');
+    Route::patch('/admin/requests/{request}', [RequestController::class, 'update'])->name('admin.requests.update');
 
     // Rutas para AdminUserController
     Route::resource('admin/users', AdminUserController::class)->names([
