@@ -13,10 +13,6 @@
                 <p>You are logged in as a User.</p>
                 <!-- Contenido específico para User -->
             @endif
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="btn btn-primary">Logout</button>
-            </form>
         @else
             <p>Please <a href="{{ route('login') }}">login</a> or <a href="{{ route('register') }}">register</a>.</p>
         @endif
