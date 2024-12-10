@@ -1,0 +1,163 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+.dashboard-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Sidebar Styles */
+.dashboard-sidebar {
+    flex: 0 0 250px;
+    margin-right: 2rem;
+}
+
+.sidebar-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu-item {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 0.5rem 0;
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sidebar-link:hover {
+    color: #2980b9;
+}
+
+/* Main Content Styles */
+.dashboard-main {
+    flex: 1;
+}
+
+.main-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.welcome-card {
+    text-align: center;
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.welcome-message {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+.requests-card .card-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.requests-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.requests-table th,
+.requests-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.requests-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.requests-table tr:last-child td {
+    border-bottom: none;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background-color: #ffeaa7;
+    color: #d35400;
+}
+
+.status-approved {
+    background-color: #55efc4;
+    color: #27ae60;
+}
+
+.status-rejected {
+    background-color: #fab1a0;
+    color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .dashboard-sidebar {
+        flex: 0 0 100%;
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .main-card {
+        padding: 1.5rem;
+    }
+
+    .requests-table th,
+    .requests-table td {
+        padding: 0.75rem;
+    }
+}

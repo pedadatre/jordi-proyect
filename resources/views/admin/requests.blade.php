@@ -3,6 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/requests_admin.css') }}">
     <div class="container">
         <h1>Manage Requests</h1>
         <!-- Aquí puedes agregar el contenido de la vista -->

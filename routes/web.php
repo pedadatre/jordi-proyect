@@ -83,6 +83,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
     Route::patch('/admin/requests/{request}', [RequestController::class, 'update'])->name('admin.requests.update');
+    
 
     // Rutas para AdminUserController
     Route::resource('admin/users', AdminUserController::class)->names([
@@ -121,5 +122,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
+
+// Rutas para la descripción de la crew
+Route::patch('/admin/crews/{crew}/updateDescription', [CrewController::class, 'updateDescription'])->name('admin.crews.updateDescription');
+
 
 require __DIR__.'/auth.php';

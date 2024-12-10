@@ -1,6 +1,8 @@
+
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/edit_crew.css') }}">
     <div class="container">
         <h1>Edit Crew</h1>
         <form method="POST" action="{{ route('admin.crews.update', $crew->id) }}">
@@ -29,6 +31,10 @@
             <div class="form-group">
                 <label for="fondation_date">Fondation Date</label>
                 <input type="date" class="form-control" id="fondation_date" name="fondation_date" value="{{ $crew->fondation_date }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required>{{ $crew->description }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

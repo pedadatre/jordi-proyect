@@ -1,0 +1,80 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button Styling */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
