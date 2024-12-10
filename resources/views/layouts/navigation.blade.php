@@ -19,9 +19,9 @@
                     @if (Auth::check())
                         @if (Auth::user()->role_id == 1)
                             <!-- Opciones para el administrador -->
-                            <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                            <!-- <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                                 {{ __('Admin Dashboard') }}
-                            </x-nav-link>
+                            </x-nav-link> -->
                             <x-nav-link :href="route('admin.requests')" :active="request()->routeIs('admin.requests')">
                                 {{ __('Manage Requests') }}
                             </x-nav-link>

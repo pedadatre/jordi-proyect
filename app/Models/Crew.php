@@ -10,10 +10,22 @@ class Crew extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'year', 'slogan', 'color', 'capacity', 'fondation_date'];
+    protected $fillable = ['name',
+        'year',
+        'slogan',
+        'color',
+        'capacity',
+        'fondation_date',
+        'description',
+        'location',
+        'main_activities',
+        'leader',
+        'events_count',
+        'contact_email',
+    ];
     protected $dates = ['fondation_date'];
 
-    // Para Laravel 9 o superior, usa $casts en su lugar
+    
     protected $casts = [
         'fondation_date' => 'date',];
         

@@ -61,4 +61,17 @@ class AdminCrewController extends Controller
         $crew->delete();
         return redirect()->route('admin.crews.index')->with('success', 'Crew deleted successfully.');
     }
+    public function updateDescription(Request $request, $id)
+{
+    $request->validate([
+        'description' => 'required|string|max:255',
+    ]);
+
+    $crew = Crew::findOrFail($id);
+    $crew->description = $request->description;
+    $crew->save();
+
+    return response()->json(['success' => true]);
+}
+
 }

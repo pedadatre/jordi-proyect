@@ -1,6 +1,8 @@
+
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/manage_user.css') }}">
     <div class="container">
         <h1>Manage Users</h1>
         <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Create User</a>

@@ -1,9 +1,8 @@
-/* Global Styles */
+/* General Styles */
 body {
-    background-color: #f0f4f8;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
 }
 
 /* Container Styling */
@@ -13,18 +12,21 @@ body {
     gap: 20px;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     background: linear-gradient(135deg, #e3f2fd, #ffffff);
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    min-height: 80vh;
 }
 
 /* Card Styling */
 .crew-card-container {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .crew-card {
@@ -35,6 +37,13 @@ body {
     background: #ffffff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
+    min-height: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 .crew-card:hover {
@@ -42,63 +51,56 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.crew-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+}
+
 .crew-card .card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.75rem;
     color: #007bff;
+    margin-bottom: 1rem;
 }
 
 .crew-card .card-text {
-    font-size: 1rem;
+    font-style: italic;
     color: #6c757d;
-}
-
-/* Spotlight Effect */
-.spotlight {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 80%);
-    transition: background 0.2s ease;
+    margin-bottom: 1rem;
 }
 
 /* Button Styling */
-.join-button {
-    background: linear-gradient(90deg, #007bff, #0056b3);
+.btn.join-button {
+    background-color: #007bff;
+    border-color: #007bff;
     color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
     padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    width: 100%;
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
-.join-button:hover {
-    background: linear-gradient(90deg, #0056b3, #003d80);
+.btn.join-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
     transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
 }
 .crew-sidebar {
     position: absolute;
     top: 0;
-    right: -100%;
-    width: 300px;
+    right: -250px;
+    width: 250px;
     height: 100%;
     background: #ffffff;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 8px 0 0 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
-    z-index: 2;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    z-index: 10;
 }
 
 .crew-card-container:hover .crew-sidebar {
@@ -134,4 +136,24 @@ body {
 
 .close-sidebar:hover {
     background: #e0564c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #crew-container {
+        flex-direction: column;
+    }
+
+    .crew-card-container {
+        max-width: 100%;
+    }
+
+    .crew-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+
+    .crew-card-container:hover .crew-sidebar {
+        right: 0;
+    }
 }
