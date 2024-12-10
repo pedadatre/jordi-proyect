@@ -1,5 +1,5 @@
 <!-- resources/views/layouts/navigation.blade.php -->
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white dark:bg-white-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -34,7 +34,7 @@
                         @elseif (Auth::user()->role_id == 2)
                             <!-- Opciones para el usuario -->
                             <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                                {{ __('User Dashboard') }}
+                                {{ __('Peticiones Enviadas') }}
                             </x-nav-link>
                             <x-nav-link :href="route('user.request.create')" :active="request()->routeIs('user.request.create')">
                                 {{ __('Request to Join Crew') }}
