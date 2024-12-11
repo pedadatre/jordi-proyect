@@ -26,4 +26,5 @@ class Request extends Model
     {
         return $this->belongsTo(Crew::class);
     }
+    
 }
