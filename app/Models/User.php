@@ -6,7 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Crew;
 use App\Models\Role;
+use App\Models\Request;
 
 class User extends Authenticatable
 {
@@ -44,23 +46,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function requests(){
+    /**
+     * Get the requests for the user.
+     */
+    public function requests()
+    {
         return $this->hasMany(Request::class);
     }
-    public function role(){
 
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
         return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * Check if the user has a specific role.
+     */
     public function hasRole($role)
     {
         return $this->roles()->where('name', $role)->exists();
     }
+
+    /**
+     * The crews that belong to the user.
+     */
     public function crews()
-{
-    return $this->belongsToMany(Crew::class, 'user_crew', 'user_id', 'crew_id');
+    {
+        return $this->belongsToMany(Crew::class, 'user_crew', 'user_id', 'crew_id');
+    }
 }
-
-}
-
-
