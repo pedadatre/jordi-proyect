@@ -16,22 +16,34 @@ class AdminUserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $crews = Crew::all();
+        return view('admin.users.create', compact('crews'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'Bday' => 'required|date',
             'password' => 'required|string|min:8|confirmed',
+            'role' => 'required|string',
+            'crew_id' => 'nullable|exists:crews,id',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
+            'surname' => $request->surname,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'Bday' => $request->Bday,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
+
+        if ($request->crew_id) {
+            $user->crews()->attach($request->crew_id);
+        }
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }

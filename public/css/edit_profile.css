@@ -71,39 +71,3 @@ button.btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
 }
-
-/* Tab Styling */
-.nav-tabs {
-    margin-bottom: 1.5rem;
-}
-
-.nav-tabs .nav-link {
-    color: #495057;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-}
-
-.nav-tabs .nav-link.active {
-    color: #007bff;
-    background-color: #fff;
-    border-color: #dee2e6 #dee2e6 #fff;
-}
-
-.tab-content {
-    padding: 1.5rem;
-    border: 1px solid #dee2e6;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-}
-/* Add these styles to your existing CSS */
-.header-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-#crewSearch {
-    width: 300px;
-    margin-right: 10px;
-}

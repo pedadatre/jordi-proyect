@@ -1,163 +1,134 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+/* Estilos para el carrusel */
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.hero {
-    position: relative;
+.carousel-caption {
+    bottom: 270px;
+}
+
+.carousel-caption h2 {
+    font-size: 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+
+.carousel-caption p {
+    width: 75%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+/* Estilos para las secciones con fondo fijo */
+.parallax-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+    position: relative; /* Añadido */
+    z-index: 1; /* Añadido */
 }
 
-.hero img {
+/* Añadir un pseudo-elemento para manejar el fondo */
+.parallax-section::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     z-index: -1;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+#section1::before {
+    background-image: url('../img/img9.jpg');
 }
 
-.slider {
-    position: relative;
-    overflow: hidden;
-    height: 400px;
+#section2::before {
+    background-image: url('../img/img10.jpg');
 }
 
-.slider-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+#section3::before {
+    background-image: url('../img/img5.jpg');
 }
 
-.slider-item {
-    min-width: 100%;
-    height: 400px;
-}
-
-.slider-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slider-nav {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-}
-
-.slider-nav-item {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: white;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.slider-nav-item.active {
-    background-color: #007bff;
-}
-
-.content {
-    max-width: 1200px;
-    margin: 0 auto;
+.parallax-section .container {
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
+    border-radius: 10px;
+    position: relative; /* Añadido */
+    z-index: 2; /* Añadido */
 }
 
-.events {
-    background-color: #f8f9fa;
-    padding: 40px 0;
-}
-
-.event-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.event-card {
-    width: calc(33.333% - 20px);
-    margin-bottom: 30px;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.event-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.event-card-content {
-    padding: 20px;
-}
-
-.event-card h3 {
-    margin-top: 0;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section {
+.parallax-section h2 {
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
-.footer-section h4 {
-    margin-bottom: 10px;
+.parallax-section p {
+    font-size: 18px;
 }
 
-.footer-section ul {
-    list-style-type: none;
-    padding: 0;
+/* Estilos para la sección de eventos */
+#eventos .card {
+    transition: transform 0.3s;
 }
 
-.footer-section ul li {
-    margin-bottom: 5px;
+#eventos .card:hover {
+    transform: translateY(-5px);
 }
 
-.footer-bottom {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #555;
+/* Estilos para el mapa */
+#ubicacion .embed-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+/* Estilos para la sección de contacto */
+#contacto {
+    background-color: #f8f9fa;
 }
 
-@media (max-width: 768px) {
-    .event-card {
-        width: calc(50% - 15px);
-    }
+#contacto form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-@media (max-width: 480px) {
-    .event-card {
-        width: 100%;
-    }
+#contacto .form-group {
+    margin-bottom: 20px;
+}
+
+#contacto label {
+    font-weight: bold;
+}
+
+#contacto .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+#contacto .btn-primary:hover {
+    background-color: #0056b3;
 }

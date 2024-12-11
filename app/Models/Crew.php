@@ -33,4 +33,9 @@ class Crew extends Model
     {
         return $this->hasMany(Request::class);
     }
+    public function users()
+{
+    return $this->belongsToMany(User::class, 'user_crew', 'crew_id', 'user_id');
+}
+
 }

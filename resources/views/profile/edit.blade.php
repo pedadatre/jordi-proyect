@@ -1,7 +1,8 @@
-<!-- resources/views/profile/edit.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/edit_profile.css') }}">
     <div class="container">
         <h1>Edit Profile</h1>
         <form method="POST" action="{{ route('profile.update') }}">
@@ -9,50 +10,45 @@
             @method('PATCH')
 
             <!-- Name -->
-            <div>
+            <div class="form-group">
                 <label for="name">Name</label>
-                <input id="name" type="text" name="name" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', auth()->user()->name) }}" required autofocus>
                 @error('name')
                     <span>{{ $message }}</span>
                 @enderror
             </div>
 
             <!-- Email -->
-            <div>
+            <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email', auth()->user()->email) }}" required>
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email', auth()->user()->email) }}" required>
                 @error('email')
                     <span>{{ $message }}</span>
                 @enderror
             </div>
 
+            <!-- Crew -->
+            <div class="form-group">
+                <label for="crew">Crew</label>
+                <input id="crew" type="text" class="form-control" name="crew" value="{{ auth()->user()->crews->isNotEmpty() ? auth()->user()->crews->first()->name : 'No Crew' }}" readonly>
+            </div>
+
             <!-- Password -->
-            <div>
+            <div class="form-group">
                 <label for="password">New Password</label>
-                <input id="password" type="password" name="password">
+                <input id="password" type="password" class="form-control" name="password">
                 @error('password')
                     <span>{{ $message }}</span>
                 @enderror
             </div>
 
             <!-- Confirm Password -->
-            <div>
+            <div class="form-group">
                 <label for="password_confirmation">Confirm Password</label>
-                <input id="password_confirmation" type="password" name="password_confirmation">
-                @error('password_confirmation')
-                    <span>{{ $message }}</span>
-                @enderror
+                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation">
             </div>
 
-            <div>
-                <button type="submit">Update Profile</button>
-            </div>
-        </form>
-
-        <form method="POST" action="{{ route('profile.destroy') }}">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Delete Profile</button>
+            <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
     </div>
 @endsection
