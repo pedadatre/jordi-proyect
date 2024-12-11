@@ -106,15 +106,10 @@
 
         <section class="parallax-section" id="section3">
             <div class="container">
-                <h2>Únete a Nosotros</h2>
-                <p>Forma parte de nuestra comunidad y crea recuerdos inolvidables.</p>
-            </div>
-        </section>
-        <section id="contacto" class="py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Contáctanos</h2>
-        <div class="row">
-            <div class="col-md-6 mx-auto">
+                <div>
+                    <h2>Únete a Nosotros</h2>
+                </div>
+                <div class="col-md-6 mx-auto">
                 <form>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
@@ -130,9 +125,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
                 </form>
+                <p>Forma parte de nuestra comunidad y crea recuerdos inolvidables.</p>
             </div>
-        </div>
-    </div>
+        </section>
+        <section id="contacto" class="py-5 bg-light">
+    
 </section>
         <!-- Mapa de Google -->
         <section id="ubicacion" class="py-5">
