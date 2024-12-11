@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProfileController;
 
+
 // Ruta para la página de inicio
 Route::get('/', function () {
     return view('home');
@@ -106,7 +107,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'update' => 'admin.crews.update',
         'destroy' => 'admin.crews.destroy',
     ]);
+    // Rutas para la búsqueda de las crews
+Route::patch('/admin/crews/{crew}/updateDescription', [AdminCrewController::class, 'updateDescription'])->name('admin.crews.updateDescription');
 });
+
 
 // Rutas para el usuario
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -123,8 +127,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
 
-// Rutas para la descripción de la crew
-Route::patch('/admin/crews/{crew}/updateDescription', [CrewController::class, 'updateDescription'])->name('admin.crews.updateDescription');
 
 
 require __DIR__.'/auth.php';

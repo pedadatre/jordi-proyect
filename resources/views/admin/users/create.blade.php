@@ -1,6 +1,8 @@
+
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('css/create_admin_user_blade.css') }}">
     <div class="container">
         <h1>Create User</h1>
         <form method="POST" action="{{ route('admin.users.store') }}">
@@ -21,6 +23,14 @@
                 <label for="password_confirmation">Confirm Password</label>
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
             </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
