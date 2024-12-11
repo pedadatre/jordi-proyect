@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('crew_id')->constrained()->onDelete('cascade');
+            $table->year('year');
             $table->timestamps();
         });
     }

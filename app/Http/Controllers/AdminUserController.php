@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Crew;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
@@ -19,7 +20,8 @@ class AdminUserController extends Controller
     public function create()
     {
         $crews = Crew::all();
-        return view('admin.users.create', compact('crews'));
+        $roles = Role::all();
+        return view('admin.users.create', compact('crews', 'roles'));
     }
 
     public function store(Request $request)
@@ -30,7 +32,7 @@ class AdminUserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'Bday' => 'required|date',
             'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|string',
+            'role_id' => 'required|exists:roles,id',
             'crew_id' => 'nullable|exists:crews,id',
         ]);
 
@@ -40,7 +42,7 @@ class AdminUserController extends Controller
             'email' => $request->email,
             'Bday' => $request->Bday,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
+            'role_id' => $request->role_id,
         ]);
 
         if ($request->crew_id) {
@@ -53,7 +55,8 @@ class AdminUserController extends Controller
     public function edit(User $user)
     {
         $crews = Crew::all();
-        return view('admin.users.edit', compact('user', 'crews'));
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'crews', 'roles'));
     }
 
     public function update(Request $request, User $user)
@@ -64,7 +67,7 @@ class AdminUserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'Bday' => 'required|date',
             'password' => 'nullable|string|min:8|confirmed',
-            'role' => 'required|string',
+            'role_id' => 'required|exists:roles,id',
             'crew_id' => 'nullable|exists:crews,id',
         ]);
 
@@ -72,7 +75,7 @@ class AdminUserController extends Controller
         $user->surname = $request->surname;
         $user->email = $request->email;
         $user->Bday = $request->Bday;
-        $user->role = $request->role;
+        $user->role_id = $request->role_id;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
