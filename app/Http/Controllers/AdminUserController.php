@@ -11,12 +11,18 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
-    public function index()
+   
+        public function index(Request $request)
     {
         $users = User::all();
-        return view('admin.users.index', compact('users'));
+        $query = $request->input('query');
+    $users = User::when($query, function ($q) use ($query) {
+        return $q->where('name', 'LIKE', '%' . $query . '%');
+    })->get();
+        return view('admin.users.index', compact('users', 'query'));
     }
-
+    
+    
     public function create()
     {
         $crews = Crew::all();
