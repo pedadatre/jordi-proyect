@@ -16,7 +16,7 @@ class UserRequest extends Model
         'status',
     ];
 
-    // Definir las relaciones con User y Crew si es necesario
+    
     public function user()
     {
         return $this->belongsTo(User::class);

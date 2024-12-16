@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{ asset('css/crew_search.css') }}">
     <div class="container">
         <h1>Manage Crews</h1>
+        <br>
+        <a href="{{ route('admin.crews.create') }}" class="btn btn-primary mb-3">Create New Crew</a>
         <form method="GET" action="{{ route('admin.crews.index') }}">
             <input type="text" name="query" value="{{ $query ?? '' }}" placeholder="Buscar...">
             <button type="submit">Buscar</button>

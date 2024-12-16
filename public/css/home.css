@@ -74,8 +74,8 @@
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
-    position: relative; /* Añadido */
-    z-index: 2; /* Añadido */
+    position: relative; 
+    z-index: 2;
 }
 
 .parallax-section h2 {
