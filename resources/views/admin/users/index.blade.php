@@ -6,6 +6,10 @@
     <div class="container">
         <h1>Manage Users</h1>
         <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Create User</a>
+        <form method="GET" action="{{ route('admin.users.index') }}">
+            <input type="text" name="query" value="{{ $query ?? '' }}" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </form>
         <table class="table mt-4">
             <thead>
                 <tr>
