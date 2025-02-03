@@ -31,6 +31,9 @@
                             <x-nav-link :href="route('admin.crews.index')" :active="request()->routeIs('admin.crews.index')">
                                 {{ __('Manage Crews') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('admin.draws')" :active="request()->routeIs('admin.draws')">
+                                {{ __('Draws') }}
+                            </x-nav-link>
                         @elseif (Auth::user()->role_id == 2)
                             <!-- Opciones para el usuario -->
                             <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">

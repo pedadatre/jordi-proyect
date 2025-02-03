@@ -37,5 +37,12 @@ class Crew extends Model
 {
     return $this->belongsToMany(User::class, 'user_crew', 'crew_id', 'user_id');
 }
+    /**
+     *Define la relación entre la peña y las ubicaciones
+     */
+public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 
 }
