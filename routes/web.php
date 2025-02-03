@@ -1,13 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckRole; // Importar el middleware
+use App\Http\Middleware\CheckRole; 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminCrewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DrawController;
+
+
 
 
 // Ruta para la página de inicio
@@ -83,6 +86,9 @@ Route::post('/register', function (HttpRequest $request) {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
+    Route::get('/admin/draws', [DrawController::class, 'show'])->name('admin.draws');
+    Route::get('/draw/{year?}', [DrawController::class, 'show'])->name('draw.show');
+    Route::post('/draw/{year}', [DrawController::class, 'performDraw'])->name('draw.performDraw');
     Route::patch('/admin/requests/{request}', [RequestController::class, 'update'])->name('admin.requests.update');
     
 
@@ -95,6 +101,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'edit' => 'admin.users.edit',
         'update' => 'admin.users.update',
         'destroy' => 'admin.users.destroy',
+        
     ]);
 
     // Rutas para AdminCrewController

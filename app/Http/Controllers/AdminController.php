@@ -22,4 +22,9 @@ class AdminController extends Controller
 
         return view('admin.index', compact('totalUsers', 'totalCrews', 'pendingRequests'));
     }
+    public function draws()
+    {
+         // Obtener todos los eventos
+        return view('admin.draws');
+    }
 }

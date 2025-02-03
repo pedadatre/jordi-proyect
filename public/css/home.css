@@ -39,8 +39,8 @@
     justify-content: center;
     color: white;
     text-align: center;
-    position: relative; /* Añadido */
-    z-index: 1; /* Añadido */
+    position: relative; 
+    z-index: 1; 
 }
 
 /* Añadir un pseudo-elemento para manejar el fondo */

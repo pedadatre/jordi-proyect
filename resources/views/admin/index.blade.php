@@ -1,4 +1,4 @@
-<!-- resources/views/admin/index.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
@@ -11,6 +11,8 @@
         <!-- Enlaces a la gestión de usuarios y crews -->
         <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Manage Users</a>
         <a href="{{ route('admin.crews.index') }}" class="btn btn-primary">Manage Crews</a>
+        <!-- Enlace para draws/sorteo -->
+        <a href="{{ route('admin.draws') }}" class="btn btn-primary">Manage Draws</a>
     </div>
     </div>
 @endsection
