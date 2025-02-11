@@ -18,13 +18,21 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+
+    @livewireStyles
     <!-- Scripts and Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @viteReactRefresh
+    @vite(['resources/css/app.css'
+    
+    ,'public/js/app.jsx'
+    ])
 
     <!-- Page Specific Styles -->
     @stack('styles')
 </head>
-<body class="font-sans antialiased min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
+<body class="font-sans antialiased min-h-screen bg-gray-100 flex flex-col">
     <a href="#main-content" class="sr-only focus:not-sr-only">Saltar al contenido principal</a>
 
     @include('layouts.navigation')

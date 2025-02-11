@@ -11,7 +11,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DrawController;
 
 
-
+Route::get('/nuestra-historia', function () {
+    return view('nuestra-historia');
+})->name('nuestra-historia');
 
 // Ruta para la página de inicio
 Route::get('/', function () {
@@ -74,7 +76,7 @@ Route::post('/register', function (HttpRequest $request) {
         'Bday' => $request->Bday,
         'email' => $request->email,
         'password' => bcrypt($request->password),
-        'role_id' => 2, // Default role for new users
+        'role_id' => 2, 
     ]);
 
     Auth::login($user);
@@ -88,7 +90,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
     Route::get('/admin/draws', [DrawController::class, 'show'])->name('admin.draws');
     Route::get('/draw/{year?}', [DrawController::class, 'show'])->name('draw.show');
-    Route::post('/draw/{year}', [DrawController::class, 'performDraw'])->name('draw.performDraw');
+    Route::post('/draw/{year}', [DrawController::class, 'performDraw'])->name('draw.perform');
     Route::patch('/admin/requests/{request}', [RequestController::class, 'update'])->name('admin.requests.update');
     
 
@@ -122,6 +124,7 @@ Route::patch('/admin/crews/{crew}/updateDescription', [AdminCrewController::clas
 // Rutas para el usuario
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/position/{year?}', [DrawController::class, 'showUserPosition'])->name('user.position');
     Route::get('/user/request', [RequestController::class, 'create'])->name('user.request.create');
     Route::post('/user/request', [RequestController::class, 'store'])->name('user.request.store');
 });
