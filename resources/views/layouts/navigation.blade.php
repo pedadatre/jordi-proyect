@@ -42,6 +42,9 @@
                             <x-nav-link :href="route('user.request.create')" :active="request()->routeIs('user.request.create')">
                                 {{ __('Request to Join Crew') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('user.position')" :active="request()->routeIs('user.position')">
+                                {{ __('Mi Posición') }}
+                            </x-nav-link>
                         @endif
                     @endif
                 </div>

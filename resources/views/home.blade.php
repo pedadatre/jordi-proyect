@@ -92,8 +92,9 @@
         <!-- Secciones con fondo fijo -->
         <section class="parallax-section" id="section1">
             <div class="container">
-                <h2>Nuestra Historia</h2>
-                <p>Descubre la rica tradición de las peñas en la Vall d'Uxó.</p>
+            <h2>Nuestra Historia</h2>
+            <p>Descubre la rica tradición de las peñas en la Vall d'Uxó.</p>
+            <a href="{{ route('nuestra-historia') }}" class="btn btn-primary">Leer Más</a>
             </div>
         </section>
 
