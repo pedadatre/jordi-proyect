@@ -111,18 +111,19 @@
                     <h2>Únete a Nosotros</h2>
                 </div>
                 <div class="col-md-6 mx-auto">
-                <form>
+                <form action="{{ route('send.mail') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu nombre">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="tu@email.com">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="tu@email.com">
                     </div>
                     <div class="form-group">
                         <label for="mensaje">Mensaje</label>
-                        <textarea class="form-control" id="mensaje" rows="4" placeholder="Tu mensaje"></textarea>
+                        <textarea name="mensaje" class="form-control" id="mensaje" rows="4" placeholder="Tu mensaje"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
                 </form>

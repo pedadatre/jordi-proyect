@@ -4,9 +4,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request as HttpRequest;
-use App\Models\Request; // Asegúrate de importar el modelo adecuado
-use App\Models\UserCrew; // Importar el modelo UserCrew
-use App\Models\Crew; // Importar el modelo Crew
+use App\Models\Request; 
+use App\Models\UserCrew; 
+use App\Models\Crew; 
 
 class RequestController extends Controller
 {

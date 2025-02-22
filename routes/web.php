@@ -9,12 +9,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DrawController;
-
+use App\Http\Controllers\MailController;
 
 Route::get('/nuestra-historia', function () {
     return view('nuestra-historia');
 })->name('nuestra-historia');
 
+//Ruta para el correo de contacto
+Route::post('/send-mail', [MailController::class, 'send'])->name('send.mail');
 // Ruta para la página de inicio
 Route::get('/', function () {
     return view('home');
