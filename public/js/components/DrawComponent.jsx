@@ -32,11 +32,12 @@ const DrawComponent = ({ locations, year, rangeYears }) => {
 
     const handleYearChange = (e) => {
         const selectedYear = e.target.value;
-        window.location.href = `/admin/draws?year=${selectedYear}`;
+        window.location.href = `/admin/draws/${selectedYear}`;
     };
 
     return (
         <div className="container">
+            <br/>
             <h1 className="text-center mb-4">Sorteo para el año {year}</h1>
 
             {/* Sección de ubicaciones */}

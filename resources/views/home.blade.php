@@ -53,11 +53,10 @@
                 <!-- Bloque de la Crew -->
                 <div class="crew-section text-center py-5 bg-light">
             <div class="container">
-                <h3 class="mb-4">Tu Peña</h3>
+                <h3 class="mb-4">TU PEÑA</h3>
                 <div class="form-group">
-                    <label for="crew" class="h4">Crew</label>
                     <input id="crew" type="text" class="form-control text-center mx-auto w-50" name="crew" 
-                           value="{{ auth()->check() && auth()->user()->crews->isNotEmpty() ? auth()->user()->crews->first()->name : 'No Crew' }}" readonly>
+                           value="{{ auth()->check() && auth()->user()->crews->isNotEmpty() ? auth()->user()->crews->first()->name : 'No tienes peña' }}" readonly>
                 </div>
             </div>
         </div>

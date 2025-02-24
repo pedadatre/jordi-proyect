@@ -89,8 +89,10 @@ Route::post('/register', function (HttpRequest $request) {
 // Rutas para el administrador
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/dashboard');
+    
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
-    Route::get('/admin/draws', [DrawController::class, 'show'])->name('admin.draws');
+    Route::get('/admin/draws/{year?}', [DrawController::class, 'show'])->name('admin.draws');
     Route::get('/draw/{year?}', [DrawController::class, 'show'])->name('draw.show');
     Route::post('/draw/{year}', [DrawController::class, 'performDraw'])->name('draw.perform');
     Route::patch('/admin/requests/{request}', [RequestController::class, 'update'])->name('admin.requests.update');

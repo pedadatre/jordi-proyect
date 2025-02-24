@@ -6,6 +6,7 @@ console.log('React está funcionando correctamente');
 
 const drawContainer = document.getElementById('draw-container');
 if (drawContainer) {
+    
     console.log('Contenedor encontrado');
     const locations = JSON.parse(drawContainer.dataset.locations);
     const year = drawContainer.dataset.year;

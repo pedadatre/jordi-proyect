@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Crew;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DrawController extends Controller
 {
@@ -23,8 +24,6 @@ class DrawController extends Controller
         $showDrawButton = $locations->count() === 0;
         $rangeYears = range($currentYear - 4, $currentYear);
         rsort($rangeYears);
-        
-
 
         return view('admin.draws', [
             'locations' => $locations,
@@ -35,7 +34,7 @@ class DrawController extends Controller
         ]);
     }
     public function showUserPosition(Request $request, $year = null)
-{
+    {
     $currentYear = now()->year;
     if (is_null($year)) {
         $year = $currentYear;
@@ -46,6 +45,7 @@ class DrawController extends Controller
     rsort($rangeYears);
     $userCrew = auth()->user()->crews()->first();
 
+    Session::put('currentYear', $year);
     return view('user.draws.show', [
         'locations' => $locations,
         'year' => $year,
@@ -55,7 +55,9 @@ class DrawController extends Controller
 }
 
     // Perform the draw for a specific year
-    public function performDraw(Request $request, $year)
+
+
+public function performDraw(Request $request, $year)
 {
     // Eliminar ubicaciones existentes para el año seleccionado
     Location::where('year', $year)->delete();
@@ -63,7 +65,7 @@ class DrawController extends Controller
     $crews = Crew::all()->pluck('name', 'id');
 
     if (count($crews) === 0) {
-        return back()->withErrors('No hay peñas disponibles para este año.');
+        return response()->json(['message' => 'No hay peñas disponibles para este año.'], 400);
     }
 
     $places = [];
@@ -98,9 +100,14 @@ class DrawController extends Controller
         Location::create($location);
     }
 
-    return redirect()->route('draw.show', ['year' => $year])
-        ->with('success', 'El sorteo se ha realizado correctamente.');
+    // Devolver las ubicaciones actualizadas
+    return response()->json([
+        'locations' => Location::where('year', $year)->with('crew')->get(),
+    ]);
 }
+
+
+
 
     private function isValidCoord($coord, $places)
     {
