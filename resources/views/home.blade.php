@@ -49,6 +49,19 @@
                 <span class="sr-only">Siguiente</span>
             </a>
         </div>
+        @auth
+                <!-- Bloque de la Crew -->
+                <div class="crew-section text-center py-5 bg-light">
+            <div class="container">
+                <h3 class="mb-4">Tu Peña</h3>
+                <div class="form-group">
+                    <label for="crew" class="h4">Crew</label>
+                    <input id="crew" type="text" class="form-control text-center mx-auto w-50" name="crew" 
+                           value="{{ auth()->check() && auth()->user()->crews->isNotEmpty() ? auth()->user()->crews->first()->name : 'No Crew' }}" readonly>
+                </div>
+            </div>
+        </div>
+    @endauth
 
         <!-- Sección de Eventos -->
         <section id="eventos" class="py-5">
@@ -111,28 +124,31 @@
                     <h2>Únete a Nosotros</h2>
                 </div>
                 <div class="col-md-6 mx-auto">
-                <form action="{{ route('send.mail') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu nombre">
+
+                    <!-- Aquí agregamos el nuevo bloque de código -->
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="tu@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea name="mensaje" class="form-control" id="mensaje" rows="4" placeholder="Tu mensaje"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
-                </form>
-                <p>Forma parte de nuestra comunidad y crea recuerdos inolvidables.</p>
+
+                    <form action="{{ route('send.mail') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="tu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea name="mensaje" class="form-control" id="mensaje" rows="4" placeholder="Tu mensaje"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                    </form>
+                    <p>Forma parte de nuestra comunidad y crea recuerdos inolvidables.</p>
+                </div>
             </div>
         </section>
-        <section id="contacto" class="py-5 bg-light">
-    
-</section>
+
         <!-- Mapa de Google -->
         <section id="ubicacion" class="py-5">
             <div class="container">
