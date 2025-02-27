@@ -2,6 +2,7 @@
 import { useRef, useState, useCallback, useEffect } from "react"
 import { motion, useSpring, useTransform } from "framer-motion"
 
+
 export function Spotlight({ className, size = 200 }) {
   const containerRef = useRef(null)
   const [isHovered, setIsHovered] = useState(false)

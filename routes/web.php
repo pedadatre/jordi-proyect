@@ -9,12 +9,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DrawController;
-
+use App\Http\Controllers\MailController;
 
 Route::get('/nuestra-historia', function () {
     return view('nuestra-historia');
 })->name('nuestra-historia');
 
+//Ruta para el correo de contacto
+Route::post('/send-mail', [MailController::class, 'send'])->name('send.mail');
 // Ruta para la página de inicio
 Route::get('/', function () {
     return view('home');
@@ -87,8 +89,10 @@ Route::post('/register', function (HttpRequest $request) {
 // Rutas para el administrador
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/dashboard');
+    
     Route::get('/admin/requests', [RequestController::class, 'index'])->name('admin.requests');
-    Route::get('/admin/draws', [DrawController::class, 'show'])->name('admin.draws');
+    Route::get('/admin/draws/{year?}', [DrawController::class, 'show'])->name('admin.draws');
     Route::get('/draw/{year?}', [DrawController::class, 'show'])->name('draw.show');
     Route::post('/draw/{year}', [DrawController::class, 'performDraw'])->name('draw.perform');
     Route::patch('/admin/requests/{request}', [RequestController::class, 'update'])->name('admin.requests.update');

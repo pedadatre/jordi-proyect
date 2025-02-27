@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Location;
 use App\Models\Crew;
 
 class AdminCrewController extends Controller
@@ -76,6 +77,10 @@ class AdminCrewController extends Controller
 
     public function destroy(Crew $crew)
     {
+
+        // Eliminar registros dependientes en la tabla locations
+        Location::where('crew_id', $crew -> id)->delete();
+
         $crew->delete();
         return redirect()->route('admin.crews.index')->with('success', 'Crew deleted successfully.');
     }

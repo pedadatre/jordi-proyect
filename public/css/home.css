@@ -1,16 +1,22 @@
-/* Estilos para el carrusel */
+/* Fondo con gradiente */
+body {
+    background: linear-gradient(to bottom right, #f3e8ff, #fce7f3, #ffe4e6);
+}
+
+/* Carrusel */
 .carousel-item {
     height: 100vh;
     min-height: 350px;
     background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 
 .carousel-caption {
     bottom: 270px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-caption h2 {
@@ -18,6 +24,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 25px;
+    color: #7c3aed; /* Color fuchsia-600 */
 }
 
 .carousel-caption p {
@@ -25,9 +32,72 @@
     margin: auto;
     font-size: 18px;
     line-height: 1.9;
+    color: #6b21a8; /* Color fuchsia-800 */
 }
 
-/* Estilos para las secciones con fondo fijo */
+/* Bloque de la Crew */
+.crew-section {
+    background: linear-gradient(to right, #d946ef, #ec4899, #f43f5e);
+    padding: 50px 0;
+    border-top: 2px solid #e9ecef;
+    border-bottom: 2px solid #e9ecef;
+    color: white;
+}
+
+.crew-section h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.crew-section .form-control {
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #7c3aed;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+    color: #6b21a8;
+}
+
+.crew-section .form-control:focus {
+    box-shadow: 0 0 5px rgba(124, 58, 237, 0.5);
+    border-color: #6b21a8;
+}
+
+/* Sección de Eventos */
+#eventos .card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#eventos .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#eventos .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+#eventos .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #7c3aed;
+}
+
+#eventos .card-text {
+    color: #6b21a8;
+}
+
+/* Secciones con fondo fijo */
 .parallax-section {
     background-attachment: fixed;
     background-position: center;
@@ -39,11 +109,10 @@
     justify-content: center;
     color: white;
     text-align: center;
-    position: relative; 
-    z-index: 1; 
+    position: relative;
+    z-index: 1;
 }
 
-/* Añadir un pseudo-elemento para manejar el fondo */
 .parallax-section::before {
     content: "";
     position: absolute;
@@ -51,84 +120,32 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
 
-#section1::before {
-    background-image: url('../img/img9.jpg');
-}
-
-#section2::before {
-    background-image: url('../img/img10.jpg');
-}
-
-#section3::before {
-    background-image: url('../img/img5.jpg');
-}
-
 .parallax-section .container {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    position: relative; 
-    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #6b21a8;
 }
 
 .parallax-section h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #7c3aed;
 }
 
 .parallax-section p {
     font-size: 18px;
+    color: #6b21a8;
 }
 
-/* Estilos para la sección de eventos */
-#eventos .card {
-    transition: transform 0.3s;
-}
-
-#eventos .card:hover {
-    transform: translateY(-5px);
-}
-
-/* Estilos para el mapa */
+/* Mapa de Google */
 #ubicacion .embed-responsive {
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
-}
-/* Estilos para la sección de contacto */
-#contacto {
-    background-color: #f8f9fa;
-}
-
-#contacto form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-#contacto .form-group {
-    margin-bottom: 20px;
-}
-
-#contacto label {
-    font-weight: bold;
-}
-
-#contacto .btn-primary {
-    background-color: #007bff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    transition: background-color 0.3s;
-}
-
-#contacto .btn-primary:hover {
-    background-color: #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
